@@ -1,6 +1,6 @@
 package com.company;
 
-public class Competitors {
+public class Competitors implements Jumpable, Runable {
     protected int height;
     protected int speed;
 
@@ -9,9 +9,11 @@ public class Competitors {
         this.speed = speed;
     }
 
-    public void jump() {
+    public int jump() {
+        return height;
     }
 
-    public void run() {
+    public int run() {
+        return speed;
     }
 }

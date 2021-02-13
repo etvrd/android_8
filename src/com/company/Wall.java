@@ -1,13 +1,13 @@
 package com.company;
 
-public class Wall implements Barrier{
-    private int height;
+public class Wall {
+    private int barHeight;
 
-    public Wall(int height) {
-        this.height = height;
+    public Wall(int barHeight) {
+        this.barHeight = barHeight;
     }
 
     public int getHeight() {
-        return height;
+        return barHeight;
     }
 }

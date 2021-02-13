@@ -1,19 +1,18 @@
 package com.company;
 
-public class Cat extends Animal implements Swimmable, Runable{
+public class Cat extends Competitors implements Jumpable, Runable{
 
-    public Cat(String name, int age) {
-        super(name, age);
+    public Cat(int height, int speed) {
+        super(height, speed);
     }
 
-    @Override
-    public void swim() {
-        System.out.println("Я кошка, но я все же плаваю");
+    public int jump() {
+        return height;
     }
 
-    @Override
-    public void run() {
-        System.out.println("ТЫГЫДЫК");
+    public int run() {
+        return speed;
     }
+
 
 }

@@ -1,13 +1,13 @@
 package com.company;
 
-public class RunRoad implements Barrier{
-    private int speed;
+public class RunRoad {
+    private int barSpeed;
 
-    public RunRoad(int speed) {
-        this.speed = speed;
+    public RunRoad(int barSpeed) {
+        this.barSpeed = barSpeed;
     }
 
     public int getSpeed() {
-        return speed;
+        return barSpeed;
     }
 }
