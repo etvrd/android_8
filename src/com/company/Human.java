@@ -1,17 +1,15 @@
 package com.company;
 
-public class Human extends Competitors implements Runable, Jumpable {
+public class Human implements Runable, Jumpable {
 
-    public Human(int height, int speed) {
-        super(height, speed);
+    private int characteristic;
+
+    public Human (int characteristic) {
+        this.characteristic = characteristic;
     }
     @Override
-    public int jump() {
-        return height;
-    }
-    @Override
-    public int run() {
-        return speed;
+    public int action() {
+        return characteristic;
     }
 
 }

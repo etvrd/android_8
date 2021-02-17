@@ -13,10 +13,12 @@ public class Main {
         // пострадали интерфейсы - каждый участник по отдельности уже не использует этот шаблон,
         // так как они наследники класса команды, который и так дает им эти способности
         int n = sc.nextInt();
-        Competitors[][] competitors = new Competitors[n][3];
+        Jumpable[][] jumpers = new Jumpable[n][3];
+        Runable[][] runners = new Runable[n][3];
         for (int i = 0; i < n; i++) {
             System.out.println("Характеристики команды №" + (i+1));
-            competitors[i] = generateCompetitors();
+            jumpers[i] = generateJumpers();
+            runners[i] = generateRunners();
         }
 
         System.out.println("Введите количество препятствий: ");
@@ -36,7 +38,7 @@ public class Main {
 
         System.out.println("Соревнования начались!\n");
         int winners = 0;
-        for (int i = 0; i < competitors.length; i++) {
+        for (int i = 0; i < jumpers.length; i++) {
             int k, j = 0;
             do {
                 k = 0;
@@ -53,8 +55,8 @@ public class Main {
                             type = "Робот";
                             break;
                     }
-                    if (competitors[i][k].jump() >= wall[j].getHeight() &&
-                        competitors[i][k].run() >= runRoad[j].getSpeed()){
+                    if (jumpers[i][k].action() >= wall[j].getHeight() &&
+                        runners[i][k].action() >= runRoad[j].getSpeed()){
                         System.out.println(type + " команды №" + (i+1) + " прошёл " + (j+1) + " препятствие!");
                     }
                     else {
@@ -77,25 +79,52 @@ public class Main {
         else
             System.out.println("Ни одна команда не прошла все препятствия.");
     }
-    public static Competitors[] generateCompetitors(){
-        int height, speed;
+    public static Jumpable[] generateJumpers(){
+        int height;
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите высоту прыжка человека: ");
         height = sc.nextInt();
-        System.out.println("Введите скорость человека: ");
-        speed = sc.nextInt();
-        Competitors human = new Human(height, speed);
+        Jumpable human = new Human(height);
+        //System.out.println("Введите скорость человека: ");
+        //speed = sc.nextInt();
+        //Competitors human = new Human(height, speed);
         System.out.println("Введите высоту прыжка кота: ");
         height = sc.nextInt();
-        System.out.println("Введите скорость кота: ");
-        speed = sc.nextInt();
-        Competitors cat = new Cat(height, speed);
+        Jumpable cat = new Cat(height);
+        //System.out.println("Введите скорость кота: ");
+        //speed = sc.nextInt();
+        //Competitors cat = new Cat(height, speed);
         System.out.println("Введите высоту прыжка робота: ");
         height = sc.nextInt();
+        //System.out.println("Введите скорость робота: ");
+        //speed = sc.nextInt();
+        //Competitors robot = new Robot(height, speed);
+        Jumpable robot = new Robot(height);
+        return new Jumpable[]{human, cat, robot};
+    }
+
+    public static Runable[] generateRunners(){
+        int speed;
+        Scanner sc = new Scanner(System.in);
+        //System.out.println("Введите высоту прыжка человека: ");
+        //height = sc.nextInt();
+        //Jumpable human = new Human(height);
+        System.out.println("Введите скорость человека: ");
+        speed = sc.nextInt();
+        Runable human = new Human(speed);
+        //System.out.println("Введите высоту прыжка кота: ");
+        //height = sc.nextInt();
+        //Jumpable cat = new Cat(height);
+        System.out.println("Введите скорость кота: ");
+        speed = sc.nextInt();
+        Runable cat = new Cat(speed);
+        //System.out.println("Введите высоту прыжка робота: ");
+        //height = sc.nextInt();
         System.out.println("Введите скорость робота: ");
         speed = sc.nextInt();
-        Competitors robot = new Robot(height, speed);
-        return new Competitors[]{human, cat, robot};
+        Runable robot = new Robot(speed);
+        //Jumpable robot = new Robot(height);
+        return new Runable[]{human, cat, robot};
     }
 }
 

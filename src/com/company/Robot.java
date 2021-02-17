@@ -1,19 +1,15 @@
 package com.company;
 
-public class Robot extends Competitors implements Jumpable, Runable{
+public class Robot implements Jumpable, Runable{
 
-    public Robot(int height, int speed) {
-        super(height, speed);
+    private int characteristic;
+
+    public Robot (int characteristic) {
+        this.characteristic = characteristic;
     }
-
     @Override
-    public int jump() {
-        return height;
-    }
-
-    @Override
-    public int run() {
-        return speed;
+    public int action() {
+        return characteristic;
     }
 
 }

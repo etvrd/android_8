@@ -1,17 +1,15 @@
 package com.company;
 
-public class Cat extends Competitors implements Jumpable, Runable{
+public class Cat implements Jumpable, Runable{
 
-    public Cat(int height, int speed) {
-        super(height, speed);
+    private int characteristic;
+
+    public Cat (int characteristic) {
+        this.characteristic = characteristic;
     }
-
-    public int jump() {
-        return height;
-    }
-
-    public int run() {
-        return speed;
+    @Override
+    public int action() {
+        return characteristic;
     }
 
 
